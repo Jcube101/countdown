@@ -12,7 +12,7 @@
 .flip-static-top,.flip-animated-top{bottom:50%;border:1px solid #334155;border-bottom:0}
 .flip-static-bottom,.flip-animated-bottom{top:50%;border:1px solid #334155;border-top:0;background:#020617}
 .flip-static{z-index:1}
-.flip-static span,.flip-animated span{position:absolute;left:0;display:flex;width:100%;height:var(--flip-h);align-items:center;justify-content:center}
+.flip-static span,.flip-animated span{position:absolute;left:0;display:flex;width:100%;height:var(--flip-h);align-items:center;justify-content:center;font-size:calc(var(--flip-h)*.64);font-weight:700;color:#f8fafc;text-transform:none;letter-spacing:-.06em;line-height:1}
 .flip-static-top span,.flip-animated-top span{top:0}
 .flip-static-bottom span,.flip-animated-bottom span{bottom:0}
 .flip-digit::after{position:absolute;z-index:6;top:calc(50% - .5px);right:0;left:0;height:1px;background:#020617;content:"";pointer-events:none}
