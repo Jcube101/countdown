@@ -1,0 +1,23 @@
+{
+  "name": "countdown_items",
+  "type": "base",
+  "fields": [
+    { "name": "title", "type": "text", "required": true, "max": 100 },
+    { "name": "slug", "type": "text", "required": true, "max": 100, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    { "name": "deadline_date", "type": "text", "required": true, "max": 10, "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    { "name": "deadline_time", "type": "text", "required": true, "max": 5, "pattern": "^\\d{2}:\\d{2}$" },
+    { "name": "timezone", "type": "text", "required": true, "max": 64 },
+    { "name": "theme_id", "type": "select", "required": true, "maxSelect": 1, "values": ["midnight-chronograph", "studio-minimal", "signal-board"] },
+    { "name": "visibility", "type": "select", "required": true, "maxSelect": 1, "values": ["public"] },
+    { "name": "note", "type": "text", "required": false, "max": 280 },
+    { "name": "archived", "type": "bool", "required": true },
+    { "name": "created", "type": "autodate", "onCreate": true },
+    { "name": "updated", "type": "autodate", "onCreate": true, "onUpdate": true }
+  ],
+  "indexes": ["CREATE UNIQUE INDEX idx_countdown_items_slug ON countdown_items (slug)"],
+  "listRule": "visibility = 'public' && archived = false",
+  "viewRule": "visibility = 'public' && archived = false",
+  "createRule": "@request.auth.collectionName = 'countdown_owners'",
+  "updateRule": "@request.auth.collectionName = 'countdown_owners'",
+  "deleteRule": null
+}
