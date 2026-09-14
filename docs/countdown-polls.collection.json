@@ -1,0 +1,38 @@
+{
+  "name": "countdown_polls",
+  "type": "base",
+  "fields": [
+    {
+      "name": "countdown",
+      "type": "relation",
+      "required": true,
+      "collectionId": "pbc_3841477372",
+      "maxSelect": 1,
+      "cascadeDelete": false
+    },
+    {
+      "name": "question",
+      "type": "text",
+      "required": true,
+      "max": 240
+    },
+    {
+      "name": "options",
+      "type": "json",
+      "required": true
+    },
+    {
+      "name": "enabled",
+      "type": "bool",
+      "required": false
+    }
+  ],
+  "listRule": "@request.auth.collectionName = 'countdown_owners' || (countdown.visibility = 'public' && countdown.archived = false && enabled = true)",
+  "viewRule": "@request.auth.collectionName = 'countdown_owners' || (countdown.visibility = 'public' && countdown.archived = false && enabled = true)",
+  "createRule": "@request.auth.collectionName = 'countdown_owners'",
+  "updateRule": "@request.auth.collectionName = 'countdown_owners'",
+  "deleteRule": null,
+  "indexes": [
+    "CREATE UNIQUE INDEX idx_countdown_poll ON countdown_polls (countdown)"
+  ]
+}

@@ -19,7 +19,7 @@ export async function completeOwnerMagicLink(otpId: string, otp: string) {
 }
 
 export async function refreshOwnerSession() {
-  if (!pb.authStore.isValid) return false
+  if (!pb.authStore.isValid || pb.authStore.record?.collectionName !== OWNER_COLLECTION) { pb.authStore.clear(); return false }
   try {
     await pb.collection(OWNER_COLLECTION).authRefresh()
     return true
