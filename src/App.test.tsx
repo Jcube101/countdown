@@ -27,3 +27,18 @@ it('keeps ended Midnight digits on stage',async()=>{
  expect(document.querySelectorAll('.flip-digit').length).toBeGreaterThan(0)
  expect(screen.queryByText('This countdown has ended.')).toBeNull()
 })
+it('renders the public library as a contents list', async () => {
+  api.listPublic.mockResolvedValue([
+    {id:'1',title:'CALL-E Hackathon',slug:'call-e',deadline_date:'2020-01-01',deadline_time:'00:00',timezone:'UTC',theme_id:'midnight-chronograph',visibility:'public',archived:false},
+    {id:'2',title:'Buildathon - Razorpay x Replit',slug:'live',deadline_date:'2099-01-01',deadline_time:'12:00',timezone:'UTC',theme_id:'studio-minimal',visibility:'public',archived:false},
+  ])
+  render(<App/>)
+  expect(await screen.findByRole('heading',{name:'Library'})).toBeTruthy()
+  expect(screen.queryByText('Every deadline, in its right form.')).toBeNull()
+  expect(screen.queryByText('PUBLIC LIBRARY')).toBeNull()
+  expect(screen.queryByText('Midnight Chronograph')).toBeNull()
+  expect(screen.queryByText('Studio Minimal')).toBeNull()
+  expect((screen.getByRole('link',{name:/CALL-E Hackathon/}) as HTMLAnchorElement).getAttribute('href')).toBe('/c/call-e')
+  expect(screen.getByText(/Ended/)).toBeTruthy()
+  expect(screen.getByRole('link',{name:/Buildathon - Razorpay x Replit/})).toBeTruthy()
+})

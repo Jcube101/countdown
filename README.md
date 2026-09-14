@@ -4,7 +4,7 @@ A public, multi-countdown hub for project deadlines, launches, and shared events
 
 ## Current scope
 
-- Public library at `/`, containing active public countdowns
+- Public contents list at `/`: titles and human deadlines, no cards or theme names
 - Individual countdown pages at `/c/:slug`
 - Browser-local display preferences at `/settings`
 - Owner-only content management at `/manage`, authenticated by a PocketBase one-time email link
@@ -17,7 +17,7 @@ The first seeded countdown is **CALL-E Hackathon**, at 14 September 2026, 9:30 P
 
 | Route | Audience | Purpose |
 | --- | --- | --- |
-| `/` | Public | Active public countdown library |
+| `/` | Public | Contents list of active public countdowns |
 | `/c/:slug` | Public | One countdown detail page |
 | `/settings` | Browser-local | Display preferences only, never deadline editing |
 | `/manage` | Owner | Create, edit, and archive persistent countdowns |
@@ -46,6 +46,7 @@ npm run dev
 ## Product rules
 
 - Deadlines are stored as a date, time, and IANA timezone. Never treat them as a viewer-local timestamp.
+- The public index is a contents page: title, human deadline, hairline rules. Do not add a manifesto, cards, or theme names there.
 - Published slugs are stable. Generate a kebab-case proposal from the title, check uniqueness, and let the owner adjust it before publishing.
 - Polls are optional and per-countdown. They use their own records and must not reuse the legacy `calle_countdown_votes` collection.
 - CALL-E starts without a poll on this hub.

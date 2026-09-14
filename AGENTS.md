@@ -14,6 +14,7 @@ This repository is the new reusable Countdown hub. It is not a replacement for t
 ## Product invariants
 
 - Public pages require no login and are read-only.
+- The public index is a contents list of titles and human deadlines. Do not restore the manifesto headline, cards, or theme names there.
 - `/manage` requires the dedicated owner account. Never put a PocketBase admin token, service token, or credential in browser code, commits, or build artifacts.
 - `/settings` stores browser-local display preferences only. It must never edit persistent countdown deadlines.
 - Archive, do not delete. Archiving reserves a slug indefinitely.

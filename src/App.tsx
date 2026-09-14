@@ -5,7 +5,7 @@ import type { Countdown } from './lib/countdowns'
 import { CountdownTimer } from './components/CountdownTimer'
 import { VoteControl } from './components/VoteControl'
 import { Manage } from './components/Manage'
-import { deadlineInTimezone } from './lib/time'
+import { deadlineInTimezone, formatDeadlineLabel, getRemaining } from './lib/time'
 import './index.css'
 
 function Shell({ children }: { children: React.ReactNode }) {
@@ -27,6 +27,7 @@ function PublicPage() {
   const [items, setItems] = useState<Countdown[]>([])
   const [state, setState] = useState('loading')
   const [attempt, setAttempt] = useState(0)
+  const [now] = useState(() => Date.now())
   useEffect(() => {
     let active = true
     listPublic()
@@ -43,18 +44,24 @@ function PublicPage() {
     </section>
   )
   return (
-    <section className="library">
-      <p className="eyebrow">PUBLIC LIBRARY</p>
-      <h1>Every deadline, in its right form.</h1>
+    <section className="library contents">
+      <h1>Library</h1>
       {items.length ? (
-        <div className="grid">
-          {items.map((x) => (
-            <Link className="card" key={x.id} to={`/c/${x.slug}`}>
-              <small>{themes.find((t) => t.id === x.theme_id)?.name}</small>
-              <h2>{x.title}</h2>
-              <p>{x.deadline_date} · {x.deadline_time} · {x.timezone}</p>
-            </Link>
-          ))}
+        <div className="contents-list">
+          {items.map((x) => {
+            let ended = false
+            let when = 'Deadline unavailable'
+            try {
+              ended = getRemaining(deadlineInTimezone(x.deadline_date, x.deadline_time, x.timezone), now).done
+              when = formatDeadlineLabel(x.deadline_date, x.deadline_time, x.timezone, ended)
+            } catch { /* keep fallback */ }
+            return (
+              <Link className={ended ? 'contents-row ended' : 'contents-row'} key={x.id} to={`/c/${x.slug}`}>
+                <span className="title">{x.title}</span>
+                <span className="when">{when}</span>
+              </Link>
+            )
+          })}
         </div>
       ) : <p className="empty">No public countdowns yet.</p>}
     </section>

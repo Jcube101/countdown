@@ -6,7 +6,7 @@ description: A public library of precise countdowns, each presented through a se
 
 ## Product structure
 
-- **Public index (`/`):** A quiet, scannable list of active public countdowns. It is a library, not a dashboard.
+- **Public index (`/`):** A contents page. Title on the left, human deadline on the right, hairline rules, no manifesto, no cards, no theme names. Ended items stay in the list with a quiet Ended label.
 - **Countdown detail (`/c/:slug`):** A full-viewport stage for one object, the timer. No library header, theme kicker, or competing headline. Title and deadline exist for assistive tech and the browser tab. Vote and Settings sit as corner utilities. A quiet Library control is the only hub navigation.
 - **Settings (`/settings`):** Browser-local viewing preferences only, beginning with preferred display timezone.
 - **Manage (`/manage`):** Owner-only library operations: create, edit, archive, choose a design, and configure an optional poll. Library chrome belongs here and on the public index, not on the timer.
@@ -38,3 +38,4 @@ Public visitors can read only active public countdowns. They never receive autho
 - **Vote as an optional utility:** Polls are scoped to one countdown and tucked behind a secondary control so they never displace the timer.
 - **Timer pages match the legacy instrument:** After comparing the live CALL-E page with the hub, detail routes drop library chrome, use square split-flap cards with a 24px unit gap, and keep the clock as the sole visual object. Studio Minimal and Signal Board still change surface and numeral treatment, not the object-first composition.
 - **Midnight red edge:** The red card outline is a Midnight Chronograph material, not only an expired state, so live timers such as Buildathon keep the same mechanical edge as ended CALL-E.
+- **Contents page over a gallery:** The root is for scanning titles and deadlines, then opening one clock. Cards, slogans, and theme names made two items feel like a dashboard.

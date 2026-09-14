@@ -41,3 +41,13 @@
 .chronograph .settings-control:hover{background:#ef4444;color:#020617}
 .chronograph .vote-control section{position:absolute;left:0;bottom:56px;width:min(360px,70vw);background:#020617;border:1px solid #334155;padding:20px}
 @media(max-width:620px){.back-control{top:16px;left:16px}.settings-control,.chronograph .vote-control{bottom:16px}.settings-control{right:16px}.chronograph .vote-control{left:16px}}
+.library.contents{max-width:920px}
+.library.contents h1{font-size:.75rem;letter-spacing:.16em;color:#94a3b8;font-weight:600;margin:0 0 40px;max-width:none}
+.contents-list{margin:0}
+a.contents-row{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:baseline;padding:22px 0;border-top:1px solid #334155}
+a.contents-row:last-child{border-bottom:1px solid #334155}
+.contents-row .title{font-family:Outfit,sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;letter-spacing:-.03em}
+.contents-row .when{color:#94a3b8;font-size:.95rem;white-space:nowrap}
+.contents-row.ended .title{color:#64748b}
+.contents-row:hover .title{color:#ef4444}
+@media(max-width:700px){a.contents-row{grid-template-columns:1fr;gap:6px}.contents-row .when{white-space:normal}}

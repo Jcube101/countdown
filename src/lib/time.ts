@@ -30,3 +30,27 @@ export function getRemaining(deadline: number, now: number): Remaining {
   const seconds = Math.floor(delta / 1000)
   return { days: Math.floor(seconds / 86_400), hours: Math.floor((seconds % 86_400) / 3600), minutes: Math.floor((seconds % 3600) / 60), seconds: seconds % 60, done: false }
 }
+
+const ZONE_LABELS: Record<string, string> = { 'Asia/Kolkata': 'IST', UTC: 'UTC' }
+
+export function formatDeadlineLabel(date: string, time: string, timezone: string, ended = false) {
+  const epoch = deadlineInTimezone(date, time, timezone)
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: timezone,
+    day: 'numeric',
+    month: 'short',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZoneName: 'shortGeneric',
+  }).formatToParts(epoch)
+  const value = (type: string) => parts.find((part) => part.type === type)?.value || ''
+  const day = value('day')
+  const month = value('month')
+  const hour = value('hour')
+  const minute = value('minute')
+  const dayPeriod = value('dayPeriod').replace(/\./g, '').replace(/\s/g, '').toUpperCase()
+  const zone = ZONE_LABELS[timezone] || value('timeZoneName') || timezone
+  const label = `${day} ${month}, ${hour}:${minute} ${dayPeriod} ${zone}`
+  return ended ? `Ended · ${label}` : label
+}
