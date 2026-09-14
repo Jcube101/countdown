@@ -13,7 +13,7 @@ description: A public library of precise countdowns, each presented through a se
 
 ## Theme library
 
-1. **Midnight Chronograph:** Default. Dark, mechanical, split-flap timer.
+1. **Midnight Chronograph:** Default. Dark, mechanical, split-flap timer. Digit faces use a signal-red structural edge as part of the instrument, live or ended.
 2. **Studio Minimal:** Off-white editorial surface, static large numerals, precise black rules.
 3. **Signal Board:** High-contrast digital information display for shared events and deadlines.
 
@@ -37,3 +37,4 @@ Public visitors can read only active public countdowns. They never receive autho
 - **Theme library over a single visual treatment:** Different deadlines benefit from different levels of ceremony, while a typed theme catalog keeps their visual quality and accessibility predictable.
 - **Vote as an optional utility:** Polls are scoped to one countdown and tucked behind a secondary control so they never displace the timer.
 - **Timer pages match the legacy instrument:** After comparing the live CALL-E page with the hub, detail routes drop library chrome, use square split-flap cards with a 24px unit gap, and keep the clock as the sole visual object. Studio Minimal and Signal Board still change surface and numeral treatment, not the object-first composition.
+- **Midnight red edge:** The red card outline is a Midnight Chronograph material, not only an expired state, so live timers such as Buildathon keep the same mechanical edge as ended CALL-E.

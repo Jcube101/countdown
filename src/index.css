@@ -19,7 +19,7 @@
 .flip-animated{backface-visibility:hidden;transform-style:preserve-3d}
 .flip-animated-top{z-index:4;transform-origin:bottom;animation:flip-top var(--flip-duration) ease-in forwards}
 .flip-animated-bottom{z-index:3;transform:rotateX(90deg);transform-origin:top;animation:flip-bottom var(--flip-duration) ease-out forwards}
-.flip-digit-done .flip-static-top,.flip-digit-done .flip-animated-top,.flip-digit-done .flip-static-bottom,.flip-digit-done .flip-animated-bottom{border-color:#ef4444}
+.midnight-chronograph .flip-static-top,.midnight-chronograph .flip-animated-top,.midnight-chronograph .flip-static-bottom,.midnight-chronograph .flip-animated-bottom,.flip-digit-done .flip-static-top,.flip-digit-done .flip-animated-top,.flip-digit-done .flip-static-bottom,.flip-digit-done .flip-animated-bottom{border-color:#ef4444}
 @keyframes flip-top{from{transform:rotateX(0deg)}to{transform:rotateX(-90deg)}}
 @keyframes flip-bottom{0%,50%{transform:rotateX(90deg)}100%{transform:rotateX(0deg)}}
 @media(max-width:620px){.chronograph .flip-clock,.chronograph .countdown-units{grid-template-columns:repeat(2,auto);gap:24px}}
