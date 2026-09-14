@@ -22,13 +22,14 @@
 .flip-digit-done .flip-static-top,.flip-digit-done .flip-animated-top,.flip-digit-done .flip-static-bottom,.flip-digit-done .flip-animated-bottom{border-color:#ef4444}
 @keyframes flip-top{from{transform:rotateX(0deg)}to{transform:rotateX(-90deg)}}
 @keyframes flip-bottom{0%,50%{transform:rotateX(90deg)}100%{transform:rotateX(0deg)}}
-@media(max-width:620px){.chronograph .flip-clock,.chronograph .countdown-units{grid-template-columns:repeat(2,auto);gap:24px}.flip-digit{--flip-w:clamp(2.6rem,18vw,4.6rem);--flip-h:clamp(3.9rem,27vw,6.6rem)}.flip-unit-digits{gap:6px}}
+@media(max-width:620px){.chronograph .flip-clock,.chronograph .countdown-units{grid-template-columns:repeat(2,auto);gap:24px}}
 @media(prefers-reduced-motion:reduce){.flip-digit{--flip-duration:.01ms}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .chronograph{position:relative;display:grid;min-height:100dvh;padding:32px;place-items:center;background:#020617}
 .chronograph.studio-minimal{background:#faf7f0;color:#18181b}
 .chronograph.signal-board{background:#061b13;color:#e3ffe8}
 .chronograph .countdown-units{display:grid;grid-template-columns:repeat(4,auto);align-items:start;justify-content:center;gap:24px;margin:0}
+@media(max-width:620px){.chronograph .flip-clock,.chronograph .countdown-units{grid-template-columns:repeat(2,auto);gap:24px}}
 .chronograph .countdown-units>div,.chronograph .flip-unit{background:transparent;border:0;box-shadow:none;padding:0}
 .back-control,.settings-control,.chronograph .vote-toggle{display:inline-flex;align-items:center;border:0;border-radius:4px;background:transparent;color:#94a3b8;font-size:12px;font-weight:500;letter-spacing:.04em;min-height:auto;padding:8px}
 .back-control{position:fixed;top:32px;left:32px;z-index:2}
